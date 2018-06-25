@@ -8,7 +8,7 @@ import (
 )
 
 func TestReadDirents(t *testing.T) {
-	entries, err := ReadDirents("testdata", nil)
+	entries, err := ReadDirents("../shared/testdata", nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -66,7 +66,7 @@ func TestReadDirents(t *testing.T) {
 }
 
 func TestReadDirentsSymlinks(t *testing.T) {
-	const osDirname = "testdata/symlinks"
+	const osDirname = "../shared/testdata/symlinks"
 
 	// Because some platforms set multiple mode type bits, when we create the
 	// expected slice, we need to ensure the mode types are set appropriately.
@@ -102,7 +102,7 @@ func TestReadDirentsSymlinks(t *testing.T) {
 }
 
 func TestReadDirnames(t *testing.T) {
-	entries, err := ReadDirnames("testdata", nil)
+	entries, err := ReadDirnames("../shared/testdata", nil)
 	if err != nil {
 		t.Fatal(err)
 	}

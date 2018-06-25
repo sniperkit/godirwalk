@@ -1,4 +1,4 @@
-package godirwalk
+package dirwalk
 
 import (
 	"os"
@@ -81,7 +81,7 @@ func (l Dirents) Swap(i, j int) { l[i], l[j] = l[j], l[i] }
 // If an optional scratch buffer is provided that is at least one page of
 // memory, it will be used when reading directory entries from the file system.
 //
-//    children, err := godirwalk.ReadDirents(osDirname, nil)
+//    children, err := dirwalk.ReadDirents(osDirname, nil)
 //    if err != nil {
 //        return nil, errors.Wrap(err, "cannot get list of directory children")
 //    }
@@ -107,7 +107,7 @@ func ReadDirents(osDirname string, scratchBuffer []byte) (Dirents, error) {
 // ReadDirents directly, rather than calling this function, then looping over
 // the results and calling os.Stat for each child.
 //
-//    children, err := godirwalk.ReadDirnames(osDirname, nil)
+//    children, err := dirwalk.ReadDirnames(osDirname, nil)
 //    if err != nil {
 //        return nil, errors.Wrap(err, "cannot get list of directory children")
 //    }

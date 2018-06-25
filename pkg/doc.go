@@ -1,5 +1,5 @@
 /*
-Package godirwalk provides functions to read and traverse directory trees.
+Package dirwalk provides functions to read and traverse directory trees.
 
 In short, why do I use this library?
 
@@ -19,8 +19,8 @@ argument. However it always provides the pathname created by using the correct
 os-specific path separator when invoking the provided callback function.
 
     dirname := "some/directory/root"
-    err := godirwalk.Walk(dirname, &godirwalk.Options{
-        Callback: func(osPathname string, de *godirwalk.Dirent) error {
+    err := dirwalk.Walk(dirname, &dirwalk.Options{
+        Callback: func(osPathname string, de *dirwalk.Dirent) error {
             fmt.Printf("%s %s\n", de.ModeType(), osPathname)
             return nil
         },
@@ -31,4 +31,4 @@ tree, but also for obtaining a list of immediate descendants of a particular
 directory, typically much more quickly than using `os.ReadDir` or
 `os.ReadDirnames`.
 */
-package godirwalk
+package dirwalk

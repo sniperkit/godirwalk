@@ -1,0 +1,15 @@
+package: github.com/sniperkit/snk.golang.dirwalk
+import:
+- package: github.com/briandowns/spinner
+- package: github.com/cep21/xdgbasedir
+- package: github.com/fatih/color
+- package: github.com/pkg/errors
+- package: github.com/sirupsen/logrus
+- package: github.com/spf13/cobra
+- package: github.com/spf13/viper
+- package: github.com/x-cray/logrus-prefixed-formatter
+- package: gopkg.in/yaml.v2
+testImport:
+- package: github.com/stretchr/testify
+  subpackages:
+  - assert

@@ -1,6 +1,6 @@
 // +build dragonfly freebsd openbsd netbsd
 
-package godirwalk
+package dirwalk
 
 import "syscall"
 

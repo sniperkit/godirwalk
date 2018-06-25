@@ -1,4 +1,4 @@
-package godirwalk
+package dirwalk
 
 import (
 	"os"

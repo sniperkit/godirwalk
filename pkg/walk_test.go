@@ -1,11 +1,11 @@
-package godirwalk_test
+package dirwalk_test
 
 import (
 	"os"
 	"path/filepath"
 	"testing"
 
-	"github.com/karrick/godirwalk"
+	dirwalk "github.com/sniperkit/snk.golang.dirwalk/pkg"
 )
 
 const testScratchBufferSize = 16 * 1024
@@ -20,7 +20,7 @@ func helperFilepathWalk(tb testing.TB, osDirname string) []string {
 			return filepath.SkipDir
 		}
 		// filepath.Walk invokes callback function with a slashed version of the
-		// pathname, while godirwalk invokes callback function with the
+		// pathname, while dirwalk invokes callback function with the
 		// os-specific pathname separator.
 		entries = append(entries, filepath.ToSlash(osPathname))
 		return nil
@@ -33,13 +33,13 @@ func helperFilepathWalk(tb testing.TB, osDirname string) []string {
 
 func helperGodirwalkWalk(tb testing.TB, osDirname string) []string {
 	var entries []string
-	err := godirwalk.Walk(osDirname, &godirwalk.Options{
-		Callback: func(osPathname string, dirent *godirwalk.Dirent) error {
+	err := dirwalk.Walk(osDirname, &dirwalk.Options{
+		Callback: func(osPathname string, dirent *dirwalk.Dirent) error {
 			if dirent.Name() == "skip" {
 				return filepath.SkipDir
 			}
 			// filepath.Walk invokes callback function with a slashed version of
-			// the pathname, while godirwalk invokes callback function with the
+			// the pathname, while dirwalk invokes callback function with the
 			// os-specific pathname separator.
 			entries = append(entries, filepath.ToSlash(osPathname))
 			return nil
@@ -138,13 +138,13 @@ func TestWalkFollowSymbolicLinksFalse(t *testing.T) {
 	}()
 
 	var actual []string
-	err := godirwalk.Walk(osDirname, &godirwalk.Options{
-		Callback: func(osPathname string, dirent *godirwalk.Dirent) error {
+	err := dirwalk.Walk(osDirname, &dirwalk.Options{
+		Callback: func(osPathname string, dirent *dirwalk.Dirent) error {
 			if dirent.Name() == "skip" {
 				return filepath.SkipDir
 			}
 			// filepath.Walk invokes callback function with a slashed version of
-			// the pathname, while godirwalk invokes callback function with the
+			// the pathname, while dirwalk invokes callback function with the
 			// os-specific pathname separator.
 			actual = append(actual, filepath.ToSlash(osPathname))
 			return nil
@@ -192,14 +192,14 @@ func TestWalkFollowSymbolicLinksTrue(t *testing.T) {
 	}()
 
 	var actual []string
-	err := godirwalk.Walk(osDirname, &godirwalk.Options{
+	err := dirwalk.Walk(osDirname, &dirwalk.Options{
 		FollowSymbolicLinks: true,
-		Callback: func(osPathname string, dirent *godirwalk.Dirent) error {
+		Callback: func(osPathname string, dirent *dirwalk.Dirent) error {
 			if dirent.Name() == "skip" {
 				return filepath.SkipDir
 			}
 			// filepath.Walk invokes callback function with a slashed version of
-			// the pathname, while godirwalk invokes callback function with the
+			// the pathname, while dirwalk invokes callback function with the
 			// os-specific pathname separator.
 			actual = append(actual, filepath.ToSlash(osPathname))
 			return nil
@@ -237,13 +237,13 @@ func TestPostChildrenCallback(t *testing.T) {
 
 	var actual []string
 
-	err := godirwalk.Walk(osDirname, &godirwalk.Options{
+	err := dirwalk.Walk(osDirname, &dirwalk.Options{
 		ScratchBuffer: make([]byte, testScratchBufferSize),
-		Callback: func(osPathname string, _ *godirwalk.Dirent) error {
+		Callback: func(osPathname string, _ *dirwalk.Dirent) error {
 			t.Logf("walk in: %s", osPathname)
 			return nil
 		},
-		PostChildrenCallback: func(osPathname string, de *godirwalk.Dirent) error {
+		PostChildrenCallback: func(osPathname string, de *dirwalk.Dirent) error {
 			t.Logf("walk out: %s", osPathname)
 			actual = append(actual, osPathname)
 			return nil

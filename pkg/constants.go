@@ -1,0 +1,5 @@
+package dirwalk
+
+const (
+	DefaultDirPath = "."
+)

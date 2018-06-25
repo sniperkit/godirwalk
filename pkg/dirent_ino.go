@@ -1,6 +1,6 @@
 // +build darwin linux
 
-package godirwalk
+package dirwalk
 
 import "syscall"
 

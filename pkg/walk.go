@@ -1,4 +1,4 @@
-package godirwalk
+package dirwalk
 
 import (
 	"os"
@@ -134,18 +134,18 @@ type WalkFunc func(osPathname string, directoryEntry *Dirent) error
 //        if len(os.Args) > 1 {
 //            dirname = os.Args[1]
 //        }
-//        err := godirwalk.Walk(dirname, &godirwalk.Options{
-//            Callback: func(osPathname string, de *godirwalk.Dirent) error {
+//        err := dirwalk.Walk(dirname, &dirwalk.Options{
+//            Callback: func(osPathname string, de *dirwalk.Dirent) error {
 //                fmt.Printf("%s %s\n", de.ModeType(), osPathname)
 //                return nil
 //            },
-//            ErrorCallback: func(osPathname string, err error) godirwalk.ErrorAction {
+//            ErrorCallback: func(osPathname string, err error) dirwalk.ErrorAction {
 //            	// Your program may want to log the error somehow.
 //            	fmt.Fprintf(os.Stderr, "ERROR: %s\n", err)
 //
 //            	// For the purposes of this example, a simple SkipNode will suffice,
 //            	// although in reality perhaps additional logic might be called for.
-//            	return godirwalk.SkipNode
+//            	return dirwalk.SkipNode
 //            },
 //        })
 //        if err != nil {

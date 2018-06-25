@@ -5,8 +5,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/karrick/godirwalk"
+	// external
 	"github.com/pkg/errors"
+
+	// internal
+	dirwalk "github.com/sniperkit/snk.golang.dirwalk/pkg"
 )
 
 func main() {
@@ -37,15 +40,15 @@ func main() {
 func pruneEmptyDirectories(osDirname string, scratchBuffer []byte) (int, error) {
 	var count int
 
-	err := godirwalk.Walk(osDirname, &godirwalk.Options{
+	err := dirwalk.Walk(osDirname, &dirwalk.Options{
 		Unsorted:      true,
 		ScratchBuffer: scratchBuffer,
-		Callback: func(_ string, _ *godirwalk.Dirent) error {
+		Callback: func(_ string, _ *dirwalk.Dirent) error {
 			// no-op while diving in; all the fun happens in PostChildrenCallback
 			return nil
 		},
-		PostChildrenCallback: func(osPathname string, _ *godirwalk.Dirent) error {
-			deChildren, err := godirwalk.ReadDirents(osPathname, scratchBuffer)
+		PostChildrenCallback: func(osPathname string, _ *dirwalk.Dirent) error {
+			deChildren, err := dirwalk.ReadDirents(osPathname, scratchBuffer)
 			if err != nil {
 				return errors.Wrap(err, "cannot ReadDirents")
 			}

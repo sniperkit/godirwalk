@@ -1,6 +1,6 @@
-# godirwalk
+# dirwalk
 
-`godirwalk` is a library for traversing a directory tree on a file
+`dirwalk` is a library for traversing a directory tree on a file
 system.
 
 In short, why do I use this library?
@@ -22,8 +22,8 @@ provided callback function.
 
 ```Go
     dirname := "some/directory/root"
-    err := godirwalk.Walk(dirname, &godirwalk.Options{
-        Callback: func(osPathname string, de *godirwalk.Dirent) error {
+    err := dirwalk.Walk(dirname, &dirwalk.Options{
+        Callback: func(osPathname string, de *dirwalk.Dirent) error {
             fmt.Printf("%s %s\n", de.ModeType(), osPathname)
             return nil
         },
@@ -36,11 +36,11 @@ of a particular directory, typically much more quickly than using
 `os.ReadDir` or `os.ReadDirnames`.
 
 Documentation is available via
-[![GoDoc](https://godoc.org/github.com/karrick/godirwalk?status.svg)](https://godoc.org/github.com/karrick/godirwalk).
+[![GoDoc](https://godoc.org/github.com/karrick/dirwalk?status.svg)](https://godoc.org/github.com/karrick/dirwalk).
 
 ## Description
 
-Here's why I use `godirwalk` in preference to `filepath.Walk`,
+Here's why I use `dirwalk` in preference to `filepath.Walk`,
 `os.ReadDir`, and `os.ReadDirnames`.
 
 ### It's faster than `filepath.Walk`
@@ -83,13 +83,13 @@ entire `os.FileInfo` data structure, the callback can easiy invoke
 go test -bench=.
 goos: darwin
 goarch: amd64
-pkg: github.com/karrick/godirwalk
+pkg: github.com/karrick/dirwalk
 BenchmarkFilepathWalk-8             	       1	3001274570 ns/op
 BenchmarkGoDirWalk-8                	       3	 465573172 ns/op
 BenchmarkFlameGraphFilepathWalk-8   	       1	6957916936 ns/op
 BenchmarkFlameGraphGoDirWalk-8      	       1	4210582571 ns/op
 PASS
-ok  	github.com/karrick/godirwalk	16.822s
+ok  	github.com/karrick/dirwalk	16.822s
 ```
 
 ##### Linux
@@ -98,13 +98,13 @@ ok  	github.com/karrick/godirwalk	16.822s
 go test -bench=.
 goos: linux
 goarch: amd64
-pkg: github.com/karrick/godirwalk
+pkg: github.com/karrick/dirwalk
 BenchmarkFilepathWalk-12              	       1	1609189170 ns/op
 BenchmarkGoDirWalk-12                 	       5	 211336628 ns/op
 BenchmarkFlameGraphFilepathWalk-12    	       1	3968119932 ns/op
 BenchmarkFlameGraphGoDirWalk-12       	       1	2139598998 ns/op
 PASS
-ok  	github.com/karrick/godirwalk	9.007s
+ok  	github.com/karrick/dirwalk	9.007s
 ```
 
 ### It's more correct on Windows than `filepath.Walk`

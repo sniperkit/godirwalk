@@ -2,7 +2,9 @@
 
 package dirwalk
 
-import "syscall"
+import (
+	"syscall"
+)
 
 func direntIno(de *syscall.Dirent) uint64 {
 	return de.Ino

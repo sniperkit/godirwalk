@@ -1,5 +1,5 @@
 hash: 95837685342c01ab47e92884d48ad78e1f28846fac4e2e4796c8bc3aef4e3e1b
-updated: 2018-06-25T16:59:10.295897648+02:00
+updated: 2018-06-25T18:14:47.41245462+02:00
 imports:
 - name: github.com/briandowns/spinner
   version: 1567cd82701bfb2399ea275d7b44a50861f830d4

@@ -13,6 +13,7 @@ func main() {
 	if len(os.Args) > 1 {
 		dirname = os.Args[1]
 	}
+
 	err := dirwalk.Walk(dirname, &dirwalk.Options{
 		// Unsorted: true, // set true for faster yet non-deterministic enumeration (see godoc)
 		Callback: func(osPathname string, de *dirwalk.Dirent) error {

@@ -1,0 +1,14 @@
+./vendor/github.com/Rogerzhao/xmlib/config/config_test.go
+vendor/github.com/Rogerzhao/xmlib/xmlog/README.md
+_vendor/github.com/Rogerzhao/xmlib/xmlog/README.md
+github.com/Rogerzhao/xmlib/_vendor/xmlog/README.md
+github.com/Rogerzhao/xmlib/_vendor/./xmlog/README.md
+./vendor/github.com/Rogerzhao/xmlib/Godeps/github.com/Rogerzhao/xmlib/config/config_test.go
+./vendor/github.com/Rogerzhao/xmlib/Godeps/xmlog/color.go
+./Godeps/github.com/node_modules/Rogerzhao/xmlib/xmlog/xmlog.go
+./Godeps/github.com/bower_components/Rogerzhao/xmlib/xmlog/color_test.go
+./Godeps/github.com/awesome-lists/README.md
+./dependencies/github.com/awesome-lists/README.md
+./Dependencies/github.com/awesome-lists/README.md
+./Godeps/github.com/awesome-awesomess//README.md
+/github.com/Rogerzhao/xmlib/vendor/xmlog/utils.go
